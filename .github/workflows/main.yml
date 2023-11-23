@@ -20,26 +20,9 @@ jobs:
     timeout-minutes: 10
     
     steps:
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.SDX_AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.SDX_AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-
       - name: AWS create new version
-        run: aws s3 ls
-
-      - name: AWS Update weight 30%
-        run: aws s3 ls
-
-      - name: AWS Update weight 50%
-        run: aws s3 ls
-  manual_job_trigger:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Gatilho manual
-        run: echo "Este job é manual"
+        run: |
+          echo "Teste ok"
 
   ManualApprove:
     needs: canaryDeploy
