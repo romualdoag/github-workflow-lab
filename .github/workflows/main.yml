@@ -25,15 +25,9 @@ jobs:
     
     steps:
       - name: AWS create new version
+        if: github.event_name != 'workflow_dispatch'
         run: |
           echo "Teste ok"
-          
-  manual_job_trigger:
-      runs-on: ubuntu-latest
-      needs: build
-      steps:
-        - name: Gatilho Manual para Job Manual
-          run: echo "Este job é acionado manualmente"
           
   ManualApprove:
     needs: canaryDeploy
