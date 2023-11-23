@@ -1,4 +1,8 @@
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - sdx
+  workflow_dispatch:
 
 name: Canary Deploy
 
