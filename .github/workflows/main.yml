@@ -35,6 +35,11 @@ jobs:
 
       - name: AWS Update weight 50%
         run: aws s3 ls
+  manual_job_trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Gatilho manual
+        run: echo "Este job é manual"
 
   ManualApprove:
     needs: canaryDeploy
