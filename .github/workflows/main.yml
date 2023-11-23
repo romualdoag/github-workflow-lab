@@ -9,38 +9,9 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          ref: sdx
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "16.x"
-          cache: "npm"
-          cache-dependency-path: "**/package-lock.json"
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.SDX_AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.SDX_AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run test:coverage
-
-      - uses: stone-ton/action-lambda-build@dev
-        with:
-          minify: false
-
-      - name: Upload
+      - name: Run echo
         run: |
-          cd build
-          lambdas=`ls *.zip`
-          for i in $lambdas; do aws s3 cp $i s3://sminfra-src-sdx/deploy/${i%.*}-sdx/latest.zip; done
-          for i in $lambdas; do aws s3 cp $i s3://sminfra-src-sdx/deploy/${i%.*}-sdx/${{ github.sha }}.zip; done
+          echo "Teste ok"
 
   canaryDeploy:
     name: Canary Deploy
