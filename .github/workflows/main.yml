@@ -16,6 +16,10 @@ jobs:
       - name: Run echo
         run: |
           echo "Teste ok"
+          
+      - name: Sleep for 60s
+        run: sleep 60s
+        shell: bash
 
   canaryDeploy:
     name: Canary Deploy
