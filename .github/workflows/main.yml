@@ -30,7 +30,6 @@ jobs:
           echo "Teste ok"
   
   manual-approval:
-    needs: canaryDeploy
     runs-on: ubuntu-latest
     steps:
       - name: Aprovação Manual
