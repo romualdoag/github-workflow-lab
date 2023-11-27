@@ -28,7 +28,14 @@ jobs:
         if: github.event_name != 'workflow_dispatch'
         run: |
           echo "Teste ok"
-          
+  
+  manual-trigger:
+    needs: canaryDeploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Manual trigger
+        run: echo "Manual Trigger"    
+        
   ManualApprove:
     needs: canaryDeploy
     runs-on: ubuntu-latest
