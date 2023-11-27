@@ -29,12 +29,14 @@ jobs:
         run: |
           echo "Teste ok"
   
-  manual-trigger:
+  manual-approval:
     needs: canaryDeploy
     runs-on: ubuntu-latest
     steps:
-      - name: Manual trigger
-        run: echo "Manual Trigger"    
+      - name: Aprovação Manual
+        run: echo "Aprovar este job manualmente"
+      - name: Aprovar
+        run: echo "Job aprovado!"
         
   ManualApprove:
     needs: canaryDeploy
